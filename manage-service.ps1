@@ -14,6 +14,8 @@ function validateConnection {
     if ( (Test-Connection -ComputerName $compName -Count 2 -Quiet) -eq "True" )
     {
         Write-Host "$compName is Online" -ForegroundColor Green
+        service_Action
+
     }
     else 
     {
@@ -22,6 +24,25 @@ function validateConnection {
 
 }
 
+function service_Action {
+
+    param($serviceaction, $servicename)
+
+    $action = $serviceaction.ToLower()
+
+    switch ($serviceaction) {
+        'start' {
+            Write-Host "Going to Start the Service $servicename"
+        }
+        'stop' {
+            Write-Host "Going to Stop the Service $servicename"
+        }
+        'status' {
+            Write-Host "Going to check teh Status of the Service $servicename"
+        }
+    }
+
+}
 
 
 $hostnames = @("192.168.145.140", "192.168.145.145")
