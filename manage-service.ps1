@@ -14,7 +14,7 @@ function validateConnection {
     if ( (Test-Connection -ComputerName $compName -Count 2 -Quiet) -eq "True" )
     {
         Write-Host "$compName is Online" -ForegroundColor Green
-        service_Action
+        service_Action -serviceaction $serviceaction -servicename $servicename
 
     }
     else 
