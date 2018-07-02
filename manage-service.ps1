@@ -33,12 +33,15 @@ function service_Action {
     switch ($serviceaction) {
         'start' {
             Write-Host "Going to Start the Service $servicename"
+            Start-Service -servicename $servicename -PassThru
         }
         'stop' {
             Write-Host "Going to Stop the Service $servicename"
+            Stop-Service -servicename $servicename -PassThru
         }
         'status' {
             Write-Host "Going to check teh Status of the Service $servicename"
+            Get-Service -servicename $servicename
         }
     }
 
